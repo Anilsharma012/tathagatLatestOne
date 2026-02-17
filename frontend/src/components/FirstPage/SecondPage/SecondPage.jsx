@@ -81,10 +81,25 @@ const SecondPage = () => {
   };
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thanks for your response!");
-    setModalOpen(false);
+    try {
+      const response = await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.success) {
+        alert("Thanks for your response!");
+        setModalOpen(false);
+      } else {
+        alert("Failed to submit enquiry: " + data.message);
+      }
+    } catch (error) {
+      console.error("Enquiry submission error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const YT_EMBED_SAFE = buildSafeEmbed(YT_ID, { autoplay: 1, jsapi: 1 });

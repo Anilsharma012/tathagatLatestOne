@@ -143,6 +143,10 @@ app.use(
 );
 
 
+// Enquiries
+const enquiryRoutes = require("./routes/enquiryRoutes");
+app.use("/api/enquiries", enquiryRoutes);
+
 /* -------------------- Static: uploads (ensure dir) -------------------- */
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) {
