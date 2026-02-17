@@ -4,19 +4,11 @@ import "./GetInTouch.css";
 import FAQ from "../../components/FAQ/FAQ";
 import { useNavigate } from "react-router-dom";
 
-
-
-
 import TouchOne from "../../images/TouchOne.png";
 
-
-import LazyImage from '../../components/LazyImage/LazyImage';
+import LazyImage from "../../components/LazyImage/LazyImage";
 
 import Team from "../../images/contactTeams.png";
-
-
-
-
 
 import one from "../../images/Review/Review/26.png";
 import two from "../../images/Review/Review/3.png";
@@ -28,25 +20,38 @@ import seven from "../../images/Review/Review/33.png";
 import Chatbox from "../../components/Chat/Chatbox";
 import http from "../../utils/http";
 
-
-
-
 const GetInTouch = () => {
   const [openIndex, setOpenIndex] = useState(0);
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: '', email: '', mobile: '', address: '', message: '' });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    address: "",
+    message: "",
+  });
   const [submitting, setSubmitting] = useState(false);
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   const submitEnquiry = async (e) => {
     e.preventDefault();
     try {
       setSubmitting(true);
-      await http.post('/crm/leads/enquiry', { name: form.name, email: form.email, mobile: form.mobile, courseInterest: form.address, message: form.message, formType: 'contact', page: 'GetInTouch' });
-      alert('Thanks! We will contact you shortly.');
-      setForm({ name: '', email: '', mobile: '', address: '', message: '' });
+      await http.post("/crm/leads/enquiry", {
+        name: form.name,
+        email: form.email,
+        mobile: form.mobile,
+        courseInterest: form.address,
+        message: form.message,
+        formType: "contact",
+        page: "GetInTouch",
+      });
+      alert("Thanks! We will contact you shortly.");
+      setForm({ name: "", email: "", mobile: "", address: "", message: "" });
     } catch (err) {
-      alert('Submission failed. Please try again.');
-    } finally { setSubmitting(false); }
+      alert("Submission failed. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
   const scrollRef = useRef(null);
   const contactRef = useRef(null);
@@ -86,7 +91,9 @@ const GetInTouch = () => {
             Get in Touch <span className="tc-highlight">With Us</span>
           </h1>
           <p className="tc-subtext">
-            Have questions about our courses, need help with your preparation, or want to schedule a counseling session? Reach out to us anytime – our team is ready to guide you.
+            Have questions about our courses, need help with your preparation,
+            or want to schedule a counseling session? Reach out to us anytime –
+            our team is ready to guide you.
           </p>
           <div className="tc-buttons">
             <a
@@ -96,7 +103,11 @@ const GetInTouch = () => {
               rel="noopener noreferrer"
               onClick={(e) => {
                 e.stopPropagation();
-                window.open("https://t.me/freecatprep", "_blank", "noopener,noreferrer");
+                window.open(
+                  "https://t.me/freecatprep",
+                  "_blank",
+                  "noopener,noreferrer",
+                );
               }}
             >
               Free Telegram Group
@@ -106,7 +117,9 @@ const GetInTouch = () => {
             </button>
             <button
               className="tc-btn"
-              onClick={() => contactRef.current?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                contactRef.current?.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Enquiry Form
             </button>
@@ -121,7 +134,10 @@ const GetInTouch = () => {
 
             <div className="tc-section">
               <h4 className="tc-label">Location</h4>
-              <p className="tc-text">106, 1st Floor, New Delhi House Connaught Place, New Delhi 110001</p>
+              <p className="tc-text">
+                106, 1st Floor, New Delhi House Connaught Place, New Delhi
+                110001
+              </p>
             </div>
 
             <div className="tc-section">
@@ -140,12 +156,46 @@ const GetInTouch = () => {
           <div className="tc-right">
             <h2 className="tc-form-heading">Send Us a Message</h2>
             <form className="tc-form" onSubmit={submitEnquiry}>
-              <input name="name" value={form.name} onChange={onChange} type="text" placeholder="Name" required />
-              <input name="email" value={form.email} onChange={onChange} type="email" placeholder="Email" />
-              <input name="mobile" value={form.mobile} onChange={onChange} type="tel" placeholder="Phone Number" required />
-              <input name="address" value={form.address} onChange={onChange} type="text" placeholder="Course/Interest" />
-              <textarea name="message" value={form.message} onChange={onChange} placeholder="Your Message" rows="4"></textarea>
-              <button type="submit" disabled={submitting}>{submitting ? 'Sending…' : 'Send Message'}</button>
+              <input
+                name="name"
+                value={form.name}
+                onChange={onChange}
+                type="text"
+                placeholder="Name"
+                required
+              />
+              <input
+                name="email"
+                value={form.email}
+                onChange={onChange}
+                type="email"
+                placeholder="Email"
+              />
+              <input
+                name="mobile"
+                value={form.mobile}
+                onChange={onChange}
+                type="tel"
+                placeholder="Phone Number"
+                required
+              />
+              <input
+                name="address"
+                value={form.address}
+                onChange={onChange}
+                type="text"
+                placeholder="Course/Interest"
+              />
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={onChange}
+                placeholder="Your Message"
+                rows="4"
+              ></textarea>
+              <button type="submit" disabled={submitting}>
+                {submitting ? "Sending…" : "Send Message"}
+              </button>
             </form>
           </div>
         </div>
@@ -165,9 +215,17 @@ const GetInTouch = () => {
 
       <div className="tc-mentor-wrapper" ref={scrollRef}>
         <div className="tc-mentor-left">
-          <h2 className="tc-mentor-title">Not Sure Where to <br />Start?</h2>
-          <p className="tc-mentor-subtext">Talk to our mentors to get a personalized study plan.</p>
-          <button className="tc-mentor-button" onClick={() => navigate("/MyCourses")}>
+          <h2 className="tc-mentor-title">
+            Not Sure Where to <br />
+            Start?
+          </h2>
+          <p className="tc-mentor-subtext">
+            Talk to our mentors to get a personalized study plan.
+          </p>
+          <button
+            className="tc-mentor-button"
+            onClick={() => navigate("/course-details")}
+          >
             Enroll Now
           </button>
         </div>
@@ -179,12 +237,16 @@ const GetInTouch = () => {
           </div>
 
           {/* 🟧 Doubt Sessions Card (no button originally — left unchanged) */}
-          <div className="tc-mentor-card light" style={{ backgroundColor: "rgba(226, 226, 226, 1)" }}>
+          <div
+            className="tc-mentor-card light"
+            style={{ backgroundColor: "rgba(226, 226, 226, 1)" }}
+          >
             <h4>Doubt Sessions</h4>
             <p>
-              TathaGat offers Unlimited 1-to-1 Doubt Sessions, Round-the-Clock Assistance, and
-              Live Class Doubts resolution, ensuring every student gets instant support, personalized
-              guidance, and real-time clarity to strengthen their understanding and boost confidence.
+              TathaGat offers Unlimited 1-to-1 Doubt Sessions, Round-the-Clock
+              Assistance, and Live Class Doubts resolution, ensuring every
+              student gets instant support, personalized guidance, and real-time
+              clarity to strengthen their understanding and boost confidence.
             </p>
           </div>
 
@@ -192,16 +254,18 @@ const GetInTouch = () => {
           <div className="tc-mentor-card dark">
             <h3>Personalized study plan of the ENTIRE COURSE</h3>
             <p>
-              At TathaGat, we understand that every student is different – with unique strengths,
-              challenges, and preparation timelines. That’s why we offer a Personalized Study Plan
-              tailored to your target exam (CAT, XAT, SNAP, or GMAT), learning pace, and academic background.
+              At TathaGat, we understand that every student is different – with
+              unique strengths, challenges, and preparation timelines. That’s
+              why we offer a Personalized Study Plan tailored to your target
+              exam (CAT, XAT, SNAP, or GMAT), learning pace, and academic
+              background.
             </p>
             <button
               onClick={() =>
                 openPopup(
                   "Personalized Study Plan",
                   "We craft a custom plan aligned to your exam target, pace and background. Get weekly milestones, topic sequencing, and mentor check-ins.",
-                  [five,six,seven] // replace / add more images as you like
+                  [five, six, seven], // replace / add more images as you like
                 )
               }
             >
@@ -213,8 +277,9 @@ const GetInTouch = () => {
           <div className="tc-mentor-card light">
             <h4>24*7 Support</h4>
             <p>
-              TathaGat offers unlimited one-on-one doubt sessions, round-the-clock assistance, ensuring
-              no query goes unanswered. Expert mentors provide continuous support, and enhancing
+              TathaGat offers unlimited one-on-one doubt sessions,
+              round-the-clock assistance, ensuring no query goes unanswered.
+              Expert mentors provide continuous support, and enhancing
               problem-solving skills for exams.
             </p>
             <button
@@ -222,7 +287,7 @@ const GetInTouch = () => {
                 openPopup(
                   "24×7 Mentor Support",
                   "Ask doubts any time. Get quick resolutions via one-to-one sessions and live class support—so you never get stuck.",
-                  [one,two,Three,four]
+                  [one, two, Three, four],
                 )
               }
             >
@@ -239,8 +304,19 @@ const GetInTouch = () => {
       {/* ===== POPUP (Modal) Markup ===== */}
       {tcmpOpen && (
         <div className="tcmp-overlay" onClick={closePopup}>
-          <div className="tcmp-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            <button className="tcmp-close" onClick={closePopup} aria-label="Close">×</button>
+          <div
+            className="tcmp-modal"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+          >
+            <button
+              className="tcmp-close"
+              onClick={closePopup}
+              aria-label="Close"
+            >
+              ×
+            </button>
             <h3 className="tcmp-title">{tcmpTitle}</h3>
             <p className="tcmp-text">{tcmpText}</p>
 
@@ -252,10 +328,9 @@ const GetInTouch = () => {
               ))}
             </div>
           </div>
-       
         </div>
       )}
-      <Chatbox/>
+      <Chatbox />
     </div>
   );
 };
