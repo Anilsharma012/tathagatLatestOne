@@ -112,6 +112,7 @@ import DevModeNotification from "./components/DevModeNotification/DevModeNotific
 import Myteam from "./components/myTeam/Myteam";
 import CRMLeads from "./pages/mainAdmin/CRM/CRMLeads";
 import NewEnquiries from "./pages/mainAdmin/CRM/NewEnquiries";
+import CounselingEnquiries from "./pages/mainAdmin/CRM/CounselingEnquiries";
 import CRMLeadForm from "./pages/mainAdmin/CRM/CRMLeadForm";
 import CRMLeadDetail from "./pages/mainAdmin/CRM/CRMLeadDetail";
 import CRMPipeline from "./pages/mainAdmin/CRM/CRMPipeline";
@@ -586,6 +587,14 @@ const AppContent = () => {
           element={
             <PrivateRoute tokenName="adminToken">
               <NewEnquiries />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin/counseling-enquiries"
+          element={
+            <PrivateRoute tokenName="adminToken">
+              <CounselingEnquiries />
             </PrivateRoute>
           }
         />

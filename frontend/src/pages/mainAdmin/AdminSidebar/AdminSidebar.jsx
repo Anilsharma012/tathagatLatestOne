@@ -200,6 +200,9 @@ const AdminSidebar = () => {
             <NavLink to="/admin/enquiries" className="admin-link">
               <FaChartBar className="admin-icon" /> New Enquiries
             </NavLink>
+            <NavLink to="/admin/counseling-enquiries" className="admin-link">
+              <FaChartBar className="admin-icon" /> Counseling Enquiries
+            </NavLink>
             <NavLink to="/admin/billing-settings" className="admin-link">
               <FaCog className="admin-icon" /> Billing Settings
             </NavLink>
