@@ -167,7 +167,7 @@ const GetInTouch = () => {
         <div className="tc-mentor-left">
           <h2 className="tc-mentor-title">Not Sure Where to <br />Start?</h2>
           <p className="tc-mentor-subtext">Talk to our mentors to get a personalized study plan.</p>
-          <button className="tc-mentor-button" onClick={() => navigate("/course-purchase")}>
+          <button className="tc-mentor-button" onClick={() => navigate("/cat-2026-online")}>
             Enroll Now
           </button>
         </div>
